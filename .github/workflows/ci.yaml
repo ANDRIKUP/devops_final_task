@@ -11,7 +11,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      IMAGE: ${{ secrets.DOKERHUB_USERNAME }}/sampleapp
       TAG: "${{ inputs.tag != '' && inputs.tag || github.ref_name }}"
     steps:
       - name: Check out
@@ -29,7 +28,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: ${{ (github.ref_name == 'main') && 'true' || 'false' }}
-          tags: ${{ env.IMAGE }}:${{ env.TAG }}
+          tags: ${{ secrets.DOKERHUB_USERNAME }}/sampleapp:${{ env.TAG }}
 
       - name: Test
         run: |
