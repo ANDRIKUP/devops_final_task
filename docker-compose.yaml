@@ -1,0 +1,34 @@
+services:
+  sampleapp:
+    image: sampleapp:latest
+    restart: always
+    build:
+      context: .
+    ports:
+      - 8000:8000
+    tty: true
+    env_file:
+      - .env
+    command:
+      - runserver 0.0.0.0:8000
+
+  migrate:
+    image: sampleapp:latest
+    profiles:
+      - migrate
+    tty: true
+    env_file:
+      - .env
+    command: 
+      - migrate
+    volumes:
+      - database:/var/lib/postgresql/data
+
+  db:
+    image: postgres:15.2
+    restart: always
+    env_file:
+      - .env
+
+volumes:
+  database:
