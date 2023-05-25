@@ -19,6 +19,8 @@ RUN source .venv/bin/activate
 RUN pip install -r requirements.txt
 RUN chmod u+x entrypoint.sh
 
+ENV PYTHONUNBUFFERED=1
+
 EXPOSE 8000
 
 ENTRYPOINT [ "./entrypoint.sh" ]
