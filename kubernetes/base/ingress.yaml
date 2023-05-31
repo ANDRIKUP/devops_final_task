@@ -5,7 +5,7 @@ kind: Ingress
 metadata:
   name: sampleapp-ingress
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /$1
+    nginx.ingress.kubernetes.io/rewrite-target: "nginx"
 spec:   
   rules:   
     - host: akupriyanov.dacdevops.ru
@@ -18,3 +18,8 @@ spec:
                 name: sampleapp-service
                 port:
                   name: http
+
+  tls:
+    - hosts:
+      - akupriyanov.dacdevops.ru
+      secretName: akupriyanov-cert
