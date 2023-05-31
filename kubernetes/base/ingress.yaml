@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+   
+kind: Ingress
+   
+metadata:
+  name: sampleapp-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: "nginx"
+spec:   
+  rules:   
+    - host: akupriyanov.dacdevops.ru
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: sampleapp-service
+                port:
+                  name: http
+
+  tls:
+    - hosts:
+      - akupriyanov.dacdevops.ru
+      secretName: akupriyanov-cert
