@@ -10,8 +10,6 @@ resources:
 
 images:
   - name: andriikuper/sampleapp
-    newName: andriikuper/final_devops_task
-    newTag: v1.3
   - name: nginx
     newName: nginx
     newTag: 1.23.2-alpine

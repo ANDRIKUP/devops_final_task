@@ -11,4 +11,3 @@ resources:
 
 images:
   - name: andriikuper/sampleapp
-    newTag: v1.3
